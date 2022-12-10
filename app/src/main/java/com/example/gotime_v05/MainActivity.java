@@ -1,4 +1,4 @@
-package com.example.gfgtest;
+package com.example.gotime_v05;
 
 import android.content.Intent;
 import android.os.Bundle;
