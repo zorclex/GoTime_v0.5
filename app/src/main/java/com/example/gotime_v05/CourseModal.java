@@ -1,4 +1,4 @@
-package com.example.gfgtest;
+package com.example.gotime_v05;
 
 public class CourseModal {
 

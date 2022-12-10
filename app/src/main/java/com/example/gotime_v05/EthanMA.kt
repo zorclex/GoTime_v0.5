@@ -1,5 +1,4 @@
-package com.example.todolisttutorial
-
+package com.example.gotime_v05;
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider

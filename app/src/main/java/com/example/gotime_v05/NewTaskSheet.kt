@@ -1,4 +1,4 @@
-package com.example.todolisttutorial
+package com.example.gotime_v05;
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
