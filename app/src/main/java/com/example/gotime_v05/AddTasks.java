@@ -68,7 +68,7 @@ public class AddTasks extends AppCompatActivity {
             public void onClick(View v) {
                 // opening a new activity via a intent.
                 Intent i;
-                i = new Intent(AddTasks.this, MainActivity.class);
+                i = new Intent(AddTasks.this, CategoryScreen.class);
                 startActivity(i);
             }
         });
