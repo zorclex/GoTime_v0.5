@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.example.todolisttutorial.databinding.FragmentNewTaskSheetBinding
+import com.example.gotime_v05.databinding.FragmentNewTaskSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class NewTaskSheet : BottomSheetDialogFragment()
