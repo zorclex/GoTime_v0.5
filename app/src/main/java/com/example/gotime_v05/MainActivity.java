@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
     // creating variables for our array list,
     // db handler, adapter and recycler view.
-    private ArrayList<CourseModal> courseModalArrayList;
+    private ArrayList<TaskModal> taskModalArrayList;
     private DBHandler dbHandler;
-    private CourseRVAdapter courseRVAdapter;
-    private RecyclerView coursesRV;
+    private CourseRVAdapter tasksRVAdapter;
+    private RecyclerView tasksRV;
     private FloatingActionButton fab;
 
 
@@ -32,23 +32,23 @@ public class MainActivity extends AppCompatActivity {
         fab = findViewById(R.id.fabAddCategory);
 
         // initializing our all variables.
-        courseModalArrayList = new ArrayList<>();
+        taskModalArrayList = new ArrayList<>();
         dbHandler = new DBHandler(MainActivity.this);
 
         // getting our course array
         // list from db handler class.
-        courseModalArrayList = dbHandler.readCourses();
+        taskModalArrayList = dbHandler.readCourses();
 
         // on below line passing our array lost to our adapter class.
-        courseRVAdapter = new CourseRVAdapter(courseModalArrayList, MainActivity.this);
-        coursesRV = findViewById(R.id.idRVCourses);
+        tasksRVAdapter = new CourseRVAdapter(taskModalArrayList, MainActivity.this);
+        tasksRV = findViewById(R.id.idRVCourses);
 
         // setting layout manager for our recycler view.
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
-        coursesRV.setLayoutManager(linearLayoutManager);
+        tasksRV.setLayoutManager(linearLayoutManager);
 
         // setting our adapter to recycler view.
-        coursesRV.setAdapter(courseRVAdapter);
+        tasksRV.setAdapter(tasksRVAdapter);
 
 
 

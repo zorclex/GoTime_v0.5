@@ -26,14 +26,11 @@ public class DBHandler extends SQLiteOpenHelper {
     // below variable is for our course name column
     private static final String NAME_COL = "name";
 
-    // below variable id for our course duration column.
-    private static final String DURATION_COL = "duration";
-
     // below variable for our course description column.
     private static final String DESCRIPTION_COL = "description";
 
     // below variable is for our course tracks column.
-    private static final String TRACKS_COL = "tracks";
+    private static final String CATEGORY = "category";
 
     // creating a constructor for our database handler.
     public DBHandler(Context context) {
@@ -50,9 +47,8 @@ public class DBHandler extends SQLiteOpenHelper {
         String query = "CREATE TABLE " + TABLE_NAME + " ("
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME_COL + " TEXT,"
-                + DURATION_COL + " TEXT,"
                 + DESCRIPTION_COL + " TEXT,"
-                + TRACKS_COL + " TEXT)";
+                + CATEGORY + " TEXT)";
 
         // at last we are calling a exec sql
         // method to execute above sql query
@@ -60,7 +56,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // this method is use to add new course to our sqlite database.
-    public void addNewCourse(String courseName, String courseDuration, String courseDescription, String courseTracks) {
+    public void addNewCourse(String taskName, String taskCategory, String taskDescription) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -73,10 +69,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // on below line we are passing all values
         // along with its key and value pair.
-        values.put(NAME_COL, courseName);
-        values.put(DURATION_COL, courseDuration);
-        values.put(DESCRIPTION_COL, courseDescription);
-        values.put(TRACKS_COL, courseTracks);
+        values.put(NAME_COL, taskName);
+
+        values.put(DESCRIPTION_COL, taskDescription);
+        values.put(CATEGORY, taskCategory);
 
         // after adding all values we are passing
         // content values to our table.
@@ -88,7 +84,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // we have created a new method for reading all the courses.
-    public ArrayList<CourseModal> readCourses() {
+    public ArrayList<TaskModal> readCourses() {
         // on below line we are creating a
         // database for reading our database.
         SQLiteDatabase db = this.getReadableDatabase();
@@ -97,14 +93,14 @@ public class DBHandler extends SQLiteOpenHelper {
         Cursor cursorCourses = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
         // on below line we are creating a new array list.
-        ArrayList<CourseModal> courseModalArrayList = new ArrayList<>();
+        ArrayList<TaskModal> courseModalArrayList = new ArrayList<>();
 
         // moving our cursor to first position.
         if (cursorCourses.moveToFirst()) {
             do {
                 // on below line we are adding the data from cursor to our array list.
-                courseModalArrayList.add(new CourseModal(cursorCourses.getString(1),
-                        cursorCourses.getString(4),
+                courseModalArrayList.add(new TaskModal(cursorCourses.getString(1),
+                        //cursorCourses.getString(4),
                         cursorCourses.getString(2),
                         cursorCourses.getString(3)));
             } while (cursorCourses.moveToNext());
@@ -118,7 +114,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // below is the method for updating our courses
     public void updateCourse(String originalCourseName, String courseName, String courseDescription,
-                             String courseTracks, String courseDuration) {
+                             String courseTracks) {
 
         // calling a method to get writable database.
         SQLiteDatabase db = this.getWritableDatabase();
@@ -127,9 +123,8 @@ public class DBHandler extends SQLiteOpenHelper {
         // on below line we are passing all values
         // along with its key and value pair.
         values.put(NAME_COL, courseName);
-        values.put(DURATION_COL, courseDuration);
         values.put(DESCRIPTION_COL, courseDescription);
-        values.put(TRACKS_COL, courseTracks);
+        values.put(CATEGORY, courseTracks);
 
         // on below line we are calling a update method to update our database and passing our values.
         // and we are comparing it with name of our course which is stored in original name variable.

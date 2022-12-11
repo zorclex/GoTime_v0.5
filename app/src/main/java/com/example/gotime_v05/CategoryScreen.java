@@ -17,7 +17,7 @@ public class CategoryScreen extends AppCompatActivity {
 
     // creating variables for our array list,
     // db handler, adapter and recycler view.
-    private ArrayList<CourseModal> courseModalArrayList;
+    private ArrayList<TaskModal> courseModalArrayList;
     private DBHandler dbHandler;
     private CategoryRVAdapter categoryRVAdapter;
     private RecyclerView categoryRv;

@@ -15,11 +15,11 @@ import java.util.ArrayList;
 public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.ViewHolder> {
 
     // variable for our array list and context
-    private ArrayList<CourseModal> courseModalArrayList;
+    private ArrayList<TaskModal> courseModalArrayList;
     private Context context;
 
     // constructor
-    public CategoryRVAdapter(ArrayList<CourseModal> courseModalArrayList, Context context) {
+    public CategoryRVAdapter(ArrayList<TaskModal> courseModalArrayList, Context context) {
         this.courseModalArrayList = courseModalArrayList;
         this.context = context;
     }
@@ -37,7 +37,7 @@ public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // on below line we are setting data
         // to our views of recycler view item.
-        CourseModal modal = courseModalArrayList.get(position);
+        TaskModal modal = courseModalArrayList.get(position);
         holder.courseTracksTV.setText(modal.getCourseTracks());
 
         // below line is to add on click listener for our recycler view item.
@@ -49,7 +49,7 @@ public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.Vi
                 Intent i = new Intent(context, UpdateCourseActivity.class);
 
                 // below we are passing all our values.
-                i.putExtra("tracks", modal.getCourseTracks());
+                i.putExtra("Category", modal.getCourseTracks());
 
                 // starting our activity.
                 context.startActivity(i);
@@ -71,7 +71,7 @@ public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // initializing our text views
-            courseTracksTV = itemView.findViewById(R.id.idTVCourseTracks);
+            courseTracksTV = itemView.findViewById(R.id.idTVCategory);
         }
     }
 }
