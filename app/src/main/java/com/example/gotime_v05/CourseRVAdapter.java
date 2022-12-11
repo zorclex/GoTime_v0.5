@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHolder> {
 
-    // variable for our array list and context
+    // variable for our array list and contextj
     private ArrayList<CourseModal> courseModalArrayList;
     private Context context;
 

@@ -3,74 +3,64 @@ package com.example.gotime_v05;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    // creating variables for our edittext, button and dbhandler
-    private EditText courseNameEdt, courseTracksEdt, courseDurationEdt, courseDescriptionEdt;
-    private Button addCourseBtn, readCourseBtn;
+    // creating variables for our array list,
+    // db handler, adapter and recycler view.
+    private ArrayList<CourseModal> courseModalArrayList;
     private DBHandler dbHandler;
+    private CourseRVAdapter courseRVAdapter;
+    private RecyclerView coursesRV;
+    private FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_view_courses);
 
-        // initializing all our variables.
-        courseNameEdt = findViewById(R.id.idEdtCourseName);
-        courseTracksEdt = findViewById(R.id.idEdtCourseTracks);
-        courseDurationEdt = findViewById(R.id.idEdtCourseDuration);
-        courseDescriptionEdt = findViewById(R.id.idEdtCourseDescription);
-        addCourseBtn = findViewById(R.id.idBtnAddCourse);
-        readCourseBtn = findViewById(R.id.idBtnReadCourse);
+        fab = findViewById(R.id.fabAddCategory);
 
-        // creating a new db handler class
-        // and passing our context to it.
+        // initializing our all variables.
+        courseModalArrayList = new ArrayList<>();
         dbHandler = new DBHandler(MainActivity.this);
 
-        // below line is to add on click listener for our add course button.
-        addCourseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // getting our course array
+        // list from db handler class.
+        courseModalArrayList = dbHandler.readCourses();
 
-                // below line is to get data from all edit text fields.
-                String courseName = courseNameEdt.getText().toString();
-                String courseTracks = courseTracksEdt.getText().toString();
-                String courseDuration = courseDurationEdt.getText().toString();
-                String courseDescription = courseDescriptionEdt.getText().toString();
+        // on below line passing our array lost to our adapter class.
+        courseRVAdapter = new CourseRVAdapter(courseModalArrayList, MainActivity.this);
+        coursesRV = findViewById(R.id.idRVCourses);
 
-                // validating if the text fields are empty or not.
-                if (courseName.isEmpty() && courseTracks.isEmpty() && courseDuration.isEmpty() && courseDescription.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please enter all the data..", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+        // setting layout manager for our recycler view.
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
+        coursesRV.setLayoutManager(linearLayoutManager);
 
-                // on below line we are calling a method to add new
-                // course to sqlite data and pass all our values to it.
-                dbHandler.addNewCourse(courseName, courseDuration, courseDescription, courseTracks);
+        // setting our adapter to recycler view.
+        coursesRV.setAdapter(courseRVAdapter);
 
-                // after adding the data we are displaying a toast message.
-                Toast.makeText(MainActivity.this, "Course has been added.", Toast.LENGTH_SHORT).show();
-                courseNameEdt.setText("");
-                courseDurationEdt.setText("");
-                courseTracksEdt.setText("");
-                courseDescriptionEdt.setText("");
-            }
-        });
 
-        readCourseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
+
+        fab.setOnClickListener(new View.OnClickListener() {
+           @Override
             public void onClick(View v) {
                 // opening a new activity via a intent.
                 Intent i;
-                i = new Intent(MainActivity.this, ViewCourses.class);
+                i = new Intent(MainActivity.this, AddTasks.class);
                 startActivity(i);
             }
         });
+
     }
 }

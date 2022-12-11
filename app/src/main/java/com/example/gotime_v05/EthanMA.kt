@@ -1,10 +1,12 @@
+
 package com.example.gotime_v05;
+/*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.example.todolisttutorial.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity()
+class MainActivity2 : AppCompatActivity()
 {
     private lateinit var binding: ActivityMainBinding
     private lateinit var taskViewModel: TaskViewModel
@@ -25,3 +27,5 @@ class MainActivity : AppCompatActivity()
         }
     }
 }
+
+ */
