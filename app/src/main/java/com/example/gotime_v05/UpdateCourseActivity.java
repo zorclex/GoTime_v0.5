@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class UpdateCourseActivity extends AppCompatActivity {
 
-    // variables for our edit text, button, strings and dbhandler class.
+    // variables for our edit text, button, strings and db handler class.
     private EditText courseNameEdt, courseTracksEdt, courseDurationEdt, courseDescriptionEdt;
     private Button updateCourseBtn, deleteCourseBtn;
     private DBHandler dbHandler;
@@ -30,7 +30,7 @@ public class UpdateCourseActivity extends AppCompatActivity {
         updateCourseBtn = findViewById(R.id.idBtnUpdateCourse);
         deleteCourseBtn = findViewById(R.id.idBtnDelete);
 
-        // on below line we are initialing our dbhandler class.
+        // on below line we are initialing our db handler class.
         dbHandler = new DBHandler(UpdateCourseActivity.this);
 
         // on below lines we are getting data which
@@ -57,7 +57,7 @@ public class UpdateCourseActivity extends AppCompatActivity {
                 dbHandler.updateCourse(courseName, courseNameEdt.getText().toString(), courseDescriptionEdt.getText().toString(), courseTracksEdt.getText().toString(), courseDurationEdt.getText().toString());
 
                 // displaying a toast message that our course has been updated.
-                Toast.makeText(UpdateCourseActivity.this, "Course Updated..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateCourseActivity.this, "Task Updated", Toast.LENGTH_SHORT).show();
 
                 // launching our main activity.
                 Intent i = new Intent(UpdateCourseActivity.this, MainActivity.class);
@@ -71,7 +71,7 @@ public class UpdateCourseActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // calling a method to delete our course.
                 dbHandler.deleteCourse(courseName);
-                Toast.makeText(UpdateCourseActivity.this, "Deleted the course", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateCourseActivity.this, "Deleted the Task", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(UpdateCourseActivity.this, MainActivity.class);
                 startActivity(i);
             }
