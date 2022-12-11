@@ -14,14 +14,6 @@
         android:layout_margin="3dp"
         android:orientation="vertical">
 
-        <!--text view for our course name-->
-        <TextView
-            android:id="@+id/idTVCourseName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:text="Task Name"
-            android:textColor="@color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,7 +23,7 @@
 
             <!--text view for our course tracks-->
             <TextView
-                android:id="@+id/idTVCourseTracks"
+                android:id="@+id/idTVCategory"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -40,18 +32,7 @@
                 android:textColor="@color/black" />
 
 
-            <!--text view for our course duration-->
-            <TextView
-                android:id="@+id/idTVCourseDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="3dp"
-                android:text="Description"
-                android:textColor="@color/black" />
-
         </LinearLayout>
-
 
 
     </LinearLayout>

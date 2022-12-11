@@ -1,5 +1,6 @@
 package com.example.gotime_v05;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,47 +9,47 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class CategoryScreen extends AppCompatActivity {
 
     // creating variables for our array list,
     // db handler, adapter and recycler view.
-    private ArrayList<TaskModal> taskModalArrayList;
+    private ArrayList<TaskModal> courseModalArrayList;
     private DBHandler dbHandler;
-    private CourseRVAdapter tasksRVAdapter;
-    private RecyclerView tasksRV;
+    private CategoryRVAdapter categoryRVAdapter;
+    private RecyclerView categoryRv;
     private FloatingActionButton fab;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_courses);
+        setContentView(R.layout.activity_view_category);
 
         fab = findViewById(R.id.fabAddCategory);
 
         // initializing our all variables.
-        taskModalArrayList = new ArrayList<>();
-        dbHandler = new DBHandler(MainActivity.this);
+        courseModalArrayList = new ArrayList<>();
+        dbHandler = new DBHandler(CategoryScreen.this);
 
         // getting our course array
         // list from db handler class.
-        taskModalArrayList = dbHandler.readCourses();
+        courseModalArrayList = dbHandler.readCourses();
 
         // on below line passing our array lost to our adapter class.
-        tasksRVAdapter = new CourseRVAdapter(taskModalArrayList, MainActivity.this);
-        tasksRV = findViewById(R.id.idRVCourses);
+        categoryRVAdapter = new CategoryRVAdapter(courseModalArrayList, CategoryScreen.this);
+        categoryRv = findViewById(R.id.idRVCategory);
 
         // setting layout manager for our recycler view.
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
-        tasksRV.setLayoutManager(linearLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(CategoryScreen.this, RecyclerView.VERTICAL, false);
+        categoryRv.setLayoutManager(linearLayoutManager);
 
         // setting our adapter to recycler view.
-        tasksRV.setAdapter(tasksRVAdapter);
+        categoryRv.setAdapter(categoryRVAdapter);
 
 
 
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // opening a new activity via a intent.
                 Intent i;
-                i = new Intent(MainActivity.this, AddTasks.class);
+                i = new Intent(CategoryScreen.this, AddTasks.class);
                 startActivity(i);
             }
         });

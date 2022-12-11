@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHolder> {
+public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.ViewHolder> {
 
     // variable for our array list and context
     private ArrayList<TaskModal> courseModalArrayList;
     private Context context;
 
     // constructor
-    public CourseRVAdapter(ArrayList<TaskModal> courseModalArrayList, Context context) {
+    public CategoryRVAdapter(ArrayList<TaskModal> courseModalArrayList, Context context) {
         this.courseModalArrayList = courseModalArrayList;
         this.context = context;
     }
@@ -29,7 +29,7 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // on below line we are inflating our layout
         // file for our recycler view items.
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_rv_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_rv_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,8 +38,6 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
         // on below line we are setting data
         // to our views of recycler view item.
         TaskModal modal = courseModalArrayList.get(position);
-        holder.courseNameTV.setText(modal.getCourseName());
-        holder.courseDescTV.setText(modal.getCourseDescription());
         holder.courseTracksTV.setText(modal.getCourseTracks());
 
         // below line is to add on click listener for our recycler view item.
@@ -51,9 +49,7 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
                 Intent i = new Intent(context, UpdateCourseActivity.class);
 
                 // below we are passing all our values.
-                i.putExtra("name", modal.getCourseName());
-                i.putExtra("description", modal.getCourseDescription());
-                i.putExtra("tracks", modal.getCourseTracks());
+                i.putExtra("Category", modal.getCourseTracks());
 
                 // starting our activity.
                 context.startActivity(i);
@@ -70,14 +66,12 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         // creating variables for our text views.
-        private TextView courseNameTV, courseDescTV, courseTracksTV;
+        private TextView courseTracksTV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // initializing our text views
-            courseNameTV = itemView.findViewById(R.id.idTVCourseName);
-            courseDescTV = itemView.findViewById(R.id.idTVCourseDescription);
-            courseTracksTV = itemView.findViewById(R.id.idTVCourseTracks);
+            courseTracksTV = itemView.findViewById(R.id.idTVCategory);
         }
     }
 }

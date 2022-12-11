@@ -1,11 +1,10 @@
 package com.example.gotime_v05;
 
-public class CourseModal {
+public class TaskModal {
 
     // variables for our course name,
     // description, tracks and duration, id.
     private String courseName;
-    private String courseDuration;
     private String courseTracks;
     private String courseDescription;
     private int id;
@@ -19,13 +18,6 @@ public class CourseModal {
         this.courseName = courseName;
     }
 
-    public String getCourseDuration() {
-        return courseDuration;
-    }
-
-    public void setCourseDuration(String courseDuration) {
-        this.courseDuration = courseDuration;
-    }
 
     public String getCourseTracks() {
         return courseTracks;
@@ -52,9 +44,9 @@ public class CourseModal {
     }
 
     // constructor
-    public CourseModal(String courseName, String courseDuration, String courseTracks, String courseDescription) {
+    public TaskModal(String courseName, String courseTracks, String courseDescription) {
         this.courseName = courseName;
-        this.courseDuration = courseDuration;
+
         this.courseTracks = courseTracks;
         this.courseDescription = courseDescription;
     }

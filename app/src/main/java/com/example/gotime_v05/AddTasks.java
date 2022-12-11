@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AddTasks extends AppCompatActivity {
 
     // creating variables for our edittext, button and db handler
-    private EditText courseNameEdt, courseTracksEdt, courseDurationEdt, courseDescriptionEdt;
+    private EditText courseNameEdt, courseTracksEdt, courseDescriptionEdt;
     private Button addCourseBtn, readCourseBtn;
     private DBHandler dbHandler;
 
@@ -24,7 +24,6 @@ public class AddTasks extends AppCompatActivity {
         // initializing all our variables.
         courseNameEdt = findViewById(R.id.idEdtCourseName);
         courseTracksEdt = findViewById(R.id.idEdtCourseTracks);
-        courseDurationEdt = findViewById(R.id.idEdtCourseDuration);
         courseDescriptionEdt = findViewById(R.id.idEdtCourseDescription);
         addCourseBtn = findViewById(R.id.idBtnAddCourse);
         readCourseBtn = findViewById(R.id.idBtnReadCourse);
@@ -41,23 +40,21 @@ public class AddTasks extends AppCompatActivity {
                 // below line is to get data from all edit text fields.
                 String courseName = courseNameEdt.getText().toString();
                 String courseTracks = courseTracksEdt.getText().toString();
-                String courseDuration = courseDurationEdt.getText().toString();
                 String courseDescription = courseDescriptionEdt.getText().toString();
 
                 // validating if the text fields are empty or not.
-                if (courseName.isEmpty() && courseTracks.isEmpty() && courseDuration.isEmpty() && courseDescription.isEmpty()) {
+                if (courseName.isEmpty() && courseTracks.isEmpty() && courseDescription.isEmpty()) {
                     Toast.makeText(AddTasks.this, "Please enter all the data..", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // on below line we are calling a method to add new
                 // course to sqlite data and pass all our values to it.
-                dbHandler.addNewCourse(courseName, courseDuration, courseDescription, courseTracks);
+                dbHandler.addNewCourse(courseName, courseDescription, courseTracks);
 
                 // after adding the data we are displaying a toast message.
                 Toast.makeText(AddTasks.this, "Course has been added.", Toast.LENGTH_SHORT).show();
                 courseNameEdt.setText("");
-                courseDurationEdt.setText("");
                 courseTracksEdt.setText("");
                 courseDescriptionEdt.setText("");
             }
@@ -68,7 +65,7 @@ public class AddTasks extends AppCompatActivity {
             public void onClick(View v) {
                 // opening a new activity via a intent.
                 Intent i;
-                i = new Intent(AddTasks.this, MainActivity.class);
+                i = new Intent(AddTasks.this, CategoryScreen.class);
                 startActivity(i);
             }
         });
