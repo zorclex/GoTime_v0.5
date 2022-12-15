@@ -23,6 +23,16 @@
             android:text="Task Name"
             android:textColor="@color/black" />
 
+        <!--text view for task due date -->
+        <TextView
+            android:id="@+id/idTVTaskTimeDue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:text="Time Due"
+            android:textColor="@color/black" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,8 +60,8 @@
                 android:text="Description"
                 android:textColor="@color/black" />
 
-        </LinearLayout>
 
+        </LinearLayout>
 
 
     </LinearLayout>

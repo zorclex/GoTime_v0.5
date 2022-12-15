@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_courses);
-
         fab = findViewById(R.id.fabAddCategory);
+
+        setContentView(R.layout.activity_view_courses);
 
         // initializing our all variables.
         taskModalArrayList = new ArrayList<>();

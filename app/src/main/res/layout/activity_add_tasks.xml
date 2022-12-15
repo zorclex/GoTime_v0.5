@@ -31,14 +31,33 @@
         android:layout_margin="10dp"
         android:hint="Enter Task Description" />
 
-    <!--button for adding new course-->
-    <Button
-        android:id="@+id/idBtnAddCourse"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Add Task"
-        android:textAllCaps="false" />
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <!--button for setting the time due -->
+        <Button
+            android:id="@+id/idBtnSetTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="Set time"
+            android:textAllCaps="false" />
+
+        <!--button for adding new course-->
+        <Button
+            android:id="@+id/idBtnAddCourse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="Add Task"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
 
     <!--new button for opening our course list activity-->
     <Button
