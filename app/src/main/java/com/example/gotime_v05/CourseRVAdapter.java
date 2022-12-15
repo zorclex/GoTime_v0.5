@@ -53,7 +53,7 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
                 // below we are passing all our values.
                 i.putExtra("name", modal.getCourseName());
                 i.putExtra("description", modal.getCourseDescription());
-                i.putExtra("tracks", modal.getCourseTracks());
+                i.putExtra("category", modal.getCourseTracks());
 
                 // starting our activity.
                 context.startActivity(i);

@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import java.util.ArrayList;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+
 
 public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.ViewHolder> {
 
@@ -39,6 +41,10 @@ public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.Vi
         // to our views of recycler view item.
         TaskModal modal = courseModalArrayList.get(position);
         holder.courseTracksTV.setText(modal.getCourseTracks());
+       // for(int x = 0; x < courseModalArrayList.size(); x++)
+      //  {
+       //     if(modal.getCourseTracks().equals(scrollTo))
+       // }
 
         // below line is to add on click listener for our recycler view item.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +55,7 @@ public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.Vi
                 Intent i = new Intent(context, UpdateCourseActivity.class);
 
                 // below we are passing all our values.
+
                 i.putExtra("Category", modal.getCourseTracks());
 
                 // starting our activity.
@@ -70,8 +77,12 @@ public class CategoryRVAdapter extends RecyclerView.Adapter<CategoryRVAdapter.Vi
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             // initializing our text views
             courseTracksTV = itemView.findViewById(R.id.idTVCategory);
+            //ArrayList with duplicates String
+
         }
     }
+
 }
