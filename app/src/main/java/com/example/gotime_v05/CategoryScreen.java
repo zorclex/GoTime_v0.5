@@ -12,16 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CategoryScreen extends AppCompatActivity {
 
     // creating variables for our array list,
     // db handler, adapter and recycler view.
-    private ArrayList<TaskModal> courseModalArrayList;
+    private ArrayList<TaskModal> categoryModalArrayList;
     private DBHandler dbHandler;
     private CategoryRVAdapter categoryRVAdapter;
     private RecyclerView categoryRv;
     private FloatingActionButton fab;
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -33,15 +35,15 @@ public class CategoryScreen extends AppCompatActivity {
         fab = findViewById(R.id.fabAddCategory);
 
         // initializing our all variables.
-        courseModalArrayList = new ArrayList<>();
+        categoryModalArrayList = new ArrayList<>();
         dbHandler = new DBHandler(CategoryScreen.this);
 
         // getting our course array
         // list from db handler class.
-        courseModalArrayList = dbHandler.readCourses();
+        categoryModalArrayList = dbHandler.readCourses();
 
         // on below line passing our array lost to our adapter class.
-        categoryRVAdapter = new CategoryRVAdapter(courseModalArrayList, CategoryScreen.this);
+        categoryRVAdapter = new CategoryRVAdapter(categoryModalArrayList, CategoryScreen.this);
         categoryRv = findViewById(R.id.idRVCategory);
 
         // setting layout manager for our recycler view.
@@ -50,6 +52,7 @@ public class CategoryScreen extends AppCompatActivity {
 
         // setting our adapter to recycler view.
         categoryRv.setAdapter(categoryRVAdapter);
+
 
 
 
